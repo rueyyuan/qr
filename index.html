@@ -2,7 +2,6 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <!-- 确保移动端视口正常缩放 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>视频播放</title>
   <style>
@@ -20,30 +19,27 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
-    /* 响应式视频容器 */
     .video-wrapper {
       width: 100%;
       height: 100%;
-      max-width: 1200px; /* 电脑端最大宽度 */
-      max-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 10px; /* 手机端留少许边距，防止贴边 */
+      padding: 10px;
     }
 
     .video-container {
-      width: 100%;
-      /* 保持标准的 16:9 视频比例 */
-      aspect-ratio: 16 / 9;
+      /* 针对竖屏视频，使用 9:16 的比例 */
+      aspect-ratio: 9 / 16;
+      height: 100%;
+      max-height: 95vh; /* 避免在手机上撑满上下边界 */
+      max-width: 100%;
       position: relative;
-      background: #111;
-      border-radius: 8px; /* 稍微带点圆角提升 UI 质感 */
+      background: #000;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     iframe {
@@ -53,14 +49,6 @@
       width: 100%;
       height: 100%;
       border: none;
-    }
-
-    /* 针对手机等竖屏设备的适配：如果屏幕太狭长，保证视频不溢出 */
-    @media (max-aspect-ratio: 16/9) {
-      .video-container {
-        width: 100%;
-        height: auto;
-      }
     }
   </style>
 </head>
